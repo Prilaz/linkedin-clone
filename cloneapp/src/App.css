@@ -1,0 +1,7 @@
+.nav-hover {
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-hover:hover {
+  color: #0073b1 !important; /* LinkedIn blue */
+}
