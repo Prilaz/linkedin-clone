@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ToggleThemeButton from "../Components/ToggleThemeButton";
 
 const Header = () => {
   const notificationCount = 5;
@@ -150,6 +151,9 @@ const Header = () => {
               </Link>
             </li>
           </ul>
+        </div>
+        <div>
+          <ToggleThemeButton />
         </div>
       </div>
     </nav>
