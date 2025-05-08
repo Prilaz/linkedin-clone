@@ -31,11 +31,6 @@ const Header = () => {
           {/* Search Bar */}
           <form className="d-flex flex-grow-1 mx-3" role="search">
             <div className="input-group">
-              <span
-                className={`input-group-text bg-transparent border-secondary ${textColor}`}
-              >
-                <i className="bi bi-search"></i>
-              </span>
               <input
                 className={`form-control rounded-pill border-secondary ${
                   isDark ? "bg-dark text-light" : ""

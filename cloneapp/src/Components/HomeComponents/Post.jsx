@@ -61,7 +61,7 @@ const Post = () => {
       {/* Post Image */}
       <Box
         component="img"
-        src="https://via.placeholder.com/500"
+        src="https://via.placeholder.com/600x300"
         alt="Post"
         sx={{
           width: "100%",
