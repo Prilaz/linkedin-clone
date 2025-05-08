@@ -52,7 +52,13 @@ const Header = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span
+              className="navbar-toggler-icon"
+              sx={{
+                backgroundColor: theme.palette.background.default,
+                color: theme.palette.text.primary,
+              }}
+            ></span>
           </button>
 
           {/* Navbar Items */}
@@ -120,8 +126,8 @@ const Header = () => {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <Link to="/signin" className="dropdown-item">
-                      Sign in
+                    <Link to="/login" className="dropdown-item">
+                      Logout
                     </Link>
                   </li>
                 </ul>
