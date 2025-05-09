@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useTheme } from "@mui/material/styles";
 
 const AddPost = () => {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
+
   const [showModal, setShowModal] = useState(false);
   const [postContent, setPostContent] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
@@ -14,13 +18,12 @@ const AddPost = () => {
     setImagePreview(null);
     setVideoPreview(null);
   };
-  ``;
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       setImagePreview(URL.createObjectURL(file));
-      setVideoPreview(null); // Clear video preview if image is selected
+      setVideoPreview(null);
     }
   };
 
@@ -28,17 +31,23 @@ const AddPost = () => {
     const file = e.target.files[0];
     if (file) {
       setVideoPreview(URL.createObjectURL(file));
-      setImagePreview(null); // Clear image preview if video is selected
+      setImagePreview(null);
     }
   };
 
   return (
-    <div className="post-container p-4 shadow-sm rounded-4 border bg-white mb-4">
+    <div
+      className={`post-container p-4 shadow-sm rounded-4 border mb-4 ${
+        isDark ? "bg-dark text-light border-secondary" : "bg-white"
+      }`}
+    >
       {/* Post Button */}
       <div className="d-flex align-items-center">
         <i className="bi bi-person-circle fs-3 text-muted"></i>
         <button
-          className="btn btn-outline-dark w-100 rounded-pill ms-2 text-start ps-3"
+          className={`btn w-100 rounded-pill ms-2 text-start ps-3 ${
+            isDark ? "btn-outline-light" : "btn-outline-dark"
+          }`}
           onClick={() => setShowModal(true)}
         >
           Start a Post
@@ -47,10 +56,11 @@ const AddPost = () => {
 
       {/* Options Row */}
       <div className="d-flex justify-content-evenly mt-2">
-        {/* Photo Upload */}
         <label
           htmlFor="image-upload"
-          className="btn btn-light shadow-sm d-flex align-items-center gap-2"
+          className={`btn shadow-sm d-flex align-items-center gap-2 ${
+            isDark ? "btn-dark border border-secondary" : "btn-light"
+          }`}
         >
           <i className="bi bi-image text-primary fs-5"></i> Photo
         </label>
@@ -62,10 +72,11 @@ const AddPost = () => {
           onChange={handleImageUpload}
         />
 
-        {/* Video Upload */}
         <label
           htmlFor="video-upload"
-          className="btn btn-light shadow-sm d-flex align-items-center gap-2"
+          className={`btn shadow-sm d-flex align-items-center gap-2 ${
+            isDark ? "btn-dark border border-secondary" : "btn-light"
+          }`}
         >
           <i className="bi bi-camera-video-fill text-success fs-5"></i> Video
         </label>
@@ -77,13 +88,16 @@ const AddPost = () => {
           onChange={handleVideoUpload}
         />
 
-        {/* Write Article */}
-        <button className="btn btn-light shadow-sm d-flex align-items-center gap-2">
+        <button
+          className={`btn shadow-sm d-flex align-items-center gap-2 ${
+            isDark ? "btn-dark border border-secondary" : "btn-light"
+          }`}
+        >
           <i className="bi bi-body-text text-warning fs-5"></i> Write Article
         </button>
       </div>
 
-      {/* Modal for Post Creation */}
+      {/* Modal */}
       {showModal && (
         <div
           className="modal fade show d-block"
@@ -94,7 +108,9 @@ const AddPost = () => {
             className="modal-dialog modal-dialog-centered modal-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="modal-content">
+            <div
+              className={`modal-content ${isDark ? "bg-dark text-light" : ""}`}
+            >
               <div className="modal-header">
                 <h5 className="modal-title">Create a Post</h5>
                 <button
@@ -103,16 +119,18 @@ const AddPost = () => {
                 ></button>
               </div>
               <div className="modal-body">
-                {/* Post Content */}
                 <textarea
                   className="form-control mb-3"
+                  style={{
+                    backgroundColor: isDark ? "#2c2c2c" : "",
+                    color: isDark ? "#fff" : "",
+                  }}
                   placeholder="What do you want to talk about?"
                   value={postContent}
                   onChange={handlePostChange}
                   rows="4"
                 ></textarea>
 
-                {/* Media Preview */}
                 {imagePreview && (
                   <div className="mb-3">
                     <img
@@ -131,12 +149,12 @@ const AddPost = () => {
                   </div>
                 )}
 
-                {/* File Upload Options */}
                 <div className="d-flex gap-3">
-                  {/* Photo Upload */}
                   <label
                     htmlFor="modal-image-upload"
-                    className="btn btn-light shadow-sm d-flex align-items-center gap-2"
+                    className={`btn shadow-sm d-flex align-items-center gap-2 ${
+                      isDark ? "btn-dark border border-secondary" : "btn-light"
+                    }`}
                   >
                     <i className="bi bi-image text-primary fs-5"></i> Add Photo
                   </label>
@@ -148,10 +166,11 @@ const AddPost = () => {
                     onChange={handleImageUpload}
                   />
 
-                  {/* Video Upload */}
                   <label
                     htmlFor="modal-video-upload"
-                    className="btn btn-light shadow-sm d-flex align-items-center gap-2"
+                    className={`btn shadow-sm d-flex align-items-center gap-2 ${
+                      isDark ? "btn-dark border border-secondary" : "btn-light"
+                    }`}
                   >
                     <i className="bi bi-camera-video-fill text-success fs-5"></i>{" "}
                     Add Video
@@ -164,8 +183,11 @@ const AddPost = () => {
                     onChange={handleVideoUpload}
                   />
 
-                  {/* Write Article */}
-                  <button className="btn btn-light shadow-sm d-flex align-items-center gap-2">
+                  <button
+                    className={`btn shadow-sm d-flex align-items-center gap-2 ${
+                      isDark ? "btn-dark border border-secondary" : "btn-light"
+                    }`}
+                  >
                     <i className="bi bi-body-text text-warning fs-5"></i> Write
                     Article
                   </button>
@@ -174,13 +196,12 @@ const AddPost = () => {
 
               <div className="modal-footer">
                 <button
-                  className="btn btn-secondary"
+                  className={`btn ${isDark ? "btn-secondary" : "btn-light"}`}
                   onClick={() => {
                     setPostContent("");
                     setShowModal(false);
                     setImagePreview(null);
                     setVideoPreview(null);
-                    return setShowModal(false);
                   }}
                 >
                   Cancel
