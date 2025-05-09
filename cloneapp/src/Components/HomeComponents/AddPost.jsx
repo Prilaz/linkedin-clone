@@ -38,12 +38,16 @@ const AddPost = () => {
   return (
     <div
       className={`post-container p-4 shadow-sm rounded-4 border mb-4 ${
-        isDark ? "bg-dark text-light border-secondary" : "bg-white"
+        isDark ? "bg-dark text-light border-dark" : "bg-white"
       }`}
     >
       {/* Post Button */}
       <div className="d-flex align-items-center">
-        <i className="bi bi-person-circle fs-3 text-muted"></i>
+        <i
+          className={`bi bi-person-circle fs-3 ${
+            isDark ? "text-light" : "text-dark"
+          }`}
+        ></i>
         <button
           className={`btn w-100 rounded-pill ms-2 text-start ps-3 ${
             isDark ? "btn-outline-light" : "btn-outline-dark"
