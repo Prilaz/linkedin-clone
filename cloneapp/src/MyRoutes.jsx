@@ -5,7 +5,7 @@ import Home from "./Pages/Home";
 import MyNetwork from "./Pages/MyNetwork";
 import Login from "./AuthPages/Login";
 import Signin from "./AuthPages/Signin";
-import Jobs from "./Pages/Jobs";
+import Job from "./Pages/Job";
 
 const MyRoutes = () => {
   return (
@@ -15,7 +15,7 @@ const MyRoutes = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/MyNetwork" element={<MyNetwork />} />
-            <Route path="/Jobs" element={<Jobs />} />
+            <Route path="/Job" element={<Job />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Signin />} />

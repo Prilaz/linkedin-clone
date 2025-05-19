@@ -67,7 +67,7 @@ const Header = () => {
               {[
                 { to: "/", icon: "house-door-fill", label: "Home" },
                 { to: "/mynetwork", icon: "people-fill", label: "My Network" },
-                { to: "/Jobs", icon: "briefcase-fill", label: "Jobs" },
+                { to: "/Job", icon: "briefcase-fill", label: "Jobs" },
                 {
                   to: "/messages",
                   icon: "chat-left-text-fill",
